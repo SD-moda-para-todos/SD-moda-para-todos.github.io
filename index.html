@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz Instagram Mejorada</title>
+   
+    <link href="https://cdn.jsdelivr.net/npm/@iconify/iconify@2.0.0/dist/iconify.min.js" rel="stylesheet">
+    <link rel="stylesheet" href="panda.css">
+    <script src="https://code.iconify.design/2/2.0.0/iconify.min.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+    <!-- Foto de portada -->
+    <div class="header"></div>
+
+    <!-- Sección de perfil -->
+    <div class="profile-section">
+        <div class="profile-photo"></div>
+        <div class="profile-info">
+            <br><br><br><br><br>
+            <h2>Said Dariel - Moda para Todos</h2>
+            <p>Descripción breve del perfil</p>
+
+            <!-- Redes Sociales -->
+            <div class="socials">
+                <a href="https://www.instagram.com/sd_moda_para_todos/profilecard/?igsh=MWZreHhsbWh1ejE3bQ==" target="_blank">
+                    <i class="iconify" data-icon="akar-icons:instagram-fill"></i>Instagram
+                </a>
+                <a href="https://www.facebook.com/share/kSqCjd1AcfHsdJEw/" target="_blank">
+                    <i class="iconify" data-icon="akar-icons:facebook-fill"></i>Facebook
+                </a>
+                <a href="https://www.tiktok.com/@sdmodaparatodos_?_t=ZM-8skklqQ8DDC&_r=1" target="_blank">
+                    <i class="iconify" data-icon="akar-icons:tiktok-fill"></i>TikTok
+                </a>
+                <a href="https://wa.me/910248305" target="_blank">
+                    <i class="iconify" data-icon="akar-icons:whatsapp-fill"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    <!-- Sección de historias -->
+    <div class="stories">
+        <div class="story" id="ropaEscolar">
+            <i class="iconify" data-icon="twemoji:panda-face"></i> Ropa Escolar
+        </div>
+        <div class="story" id="accesorios">
+            <i class="iconify" data-icon="twemoji:panda-face"></i> Accesorios
+        </div>
+        <div class="story" id="calzado">
+            <i class="iconify" data-icon="twemoji:panda-face"></i> Calzado
+        </div>
+        <div class="story" id="extras">
+            <i class="iconify" data-icon="twemoji:panda-face"></i> Extras
+        </div>
+    </div>
+
+    <!-- Lista de productos -->
+    <div class="product-list" id="productList"></div>
+</div>
+
+<script>
+    // Productos de ejemplo
+    const productos = {
+        ropaEscolar: [
+            { img: 'ropa1.jpg', nombre: 'Uniforme Escolar', precio: 'S/ 50', colores: 'Rojo, Azul', tallas: 'S, M, L' },
+            { img: 'ropa2.jpg', nombre: 'Pantalón Escolar', precio: 'S/ 30', colores: 'Negro, Gris', tallas: 'S, M, L' },
+            { img: 'ropa3.jpg', nombre: 'Camisa Escolar', precio: 'S/ 40', colores: 'Blanco, Azul', tallas: 'S, M, L' },
+            { img: 'ropa4.jpg', nombre: 'Chaqueta Escolar', precio: 'S/ 70', colores: 'Azul', tallas: 'S, M' }
+        ],
+        accesorios: [
+            { img: 'accesorio1.jpg', nombre: 'Gorra Escolar', precio: 'S/ 20', colores: 'Blanco, Negro', tallas: 'Única' },
+            { img: 'accesorio2.jpg', nombre: 'Cinturón', precio: 'S/ 15', colores: 'Negro, Marrón', tallas: 'Única' }
+        ],
+        calzado: [
+            { img: 'calzado1.jpg', nombre: 'Zapato Escolar', precio: 'S/ 60', colores: 'Negro', tallas: '36, 37, 38, 39' },
+            { img: 'calzado2.jpg', nombre: 'Zapatilla Deportiva', precio: 'S/ 90', colores: 'Blanco, Negro', tallas: '38, 39, 40' }
+        ],
+        extras: [
+            { img: 'extra1.jpg', nombre: 'Mochila Escolar', precio: 'S/ 80', colores: 'Rojo, Azul', tallas: 'Única' }
+        ]
+    };
+
+    // Función para agregar productos al DOM
+    function mostrarProductos(categoria) {
+        const lista = document.getElementById('productList');
+        lista.innerHTML = ''; // Limpiar lista
+
+        productos[categoria].forEach(producto => {
+            const productoDiv = document.createElement('div');
+            productoDiv.classList.add('product');
+            productoDiv.innerHTML = `
+                <img src="images/${producto.img}" alt="${producto.nombre}">
+                <h3>${producto.nombre}</h3>
+                <p>${producto.precio}</p>
+                <p>Colores: ${producto.colores}</p>
+                <p>Tallas: ${producto.tallas}</p>
+            `;
+            lista.appendChild(productoDiv);
+        });
+    }
+
+    // Añadir eventos para mostrar los productos de cada categoría
+    document.getElementById('ropaEscolar').addEventListener('click', () => mostrarProductos('ropaEscolar'));
+    document.getElementById('accesorios').addEventListener('click', () => mostrarProductos('accesorios'));
+    document.getElementById('calzado').addEventListener('click', () => mostrarProductos('calzado'));
+    document.getElementById('extras').addEventListener('click', () => mostrarProductos('extras'));
+</script>
+
+</body>
+</html>
