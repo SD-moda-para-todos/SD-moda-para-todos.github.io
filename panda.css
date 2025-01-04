@@ -1,183 +1,256 @@
-       /* Estilos generales */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 10px;
-}
+        /* Reset de margenes */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* Estilos para el menú de hamburguesa */
-.hamburger-menu {
-    position: absolute;
-    left: 20px; /* Alineado al costado izquierdo */
-    top: 20px; /* Alineado arriba */
-    z-index: 10;
-}
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fafafa;
+            color: black;
+        }
 
-.hamburger-menu button {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-}
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            width: 100%;
+        }
 
-/* Estilos del menú desplegable */
-.menu-content {
-    display: none;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 10px;
-    position: absolute;
-    left: 0;
-    top: 40px; /* Coloca el menú debajo del botón */
-    width: 150px; /* Ajusta el ancho del menú */
-}
+        /* Foto de portada */
+        .header {
+            width: 100%;
+            height: 350px;
+            background: url('portada.jpeg') no-repeat center center;
+            background-size: cover;
+            border-radius: 10px;
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
 
-.menu-content ul {
-    list-style-type: none;
-    padding: 0;
-}
+        .header:hover {
+            transform: scale(1.1);
+            filter: brightness(80%);
+        }
 
-.menu-content li {
-    margin: 5px 0;
-}
+        /* Sección de perfil */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            margin-top: -70px;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-.menu-content a {
-    text-decoration: none;
-    color: #333;
-}
+        .profile-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin-right: 20px;
+            background: url('perfil.jpeg') no-repeat center center;
+            background-size: cover;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
 
-.menu-content.show {
-    display: block;
-}
+        .profile-photo:hover {
+            transform: scale(1.1);
+        }
 
-/* Estilos para la foto de perfil */
-.profile-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    margin-left: 0; /* Eliminar espacio al lado izquierdo en móviles */
-}
+        .profile-info {
+            color: black;
+            text-align: center;
+        }
 
-.profile-photo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: #ccc;
-    margin-bottom: 20px;
-}
+        .profile-info h2 {
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
 
-.profile-info h2 {
-    margin: 0;
-    font-size: 24px;
-    text-align: center;
-}
+        .profile-info p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
 
-.profile-info p {
-    font-size: 16px;
-    color: #777;
-    text-align: center;
-}
+        /* Redes sociales */
+        .socials {
+            margin-top: 15px;
+        }
 
-/* Barra de búsqueda */
-.search-bar {
-    text-align: center;
-    margin: 20px 0;
-}
+        .socials a {
+            font-size: 20px;
+            color: black;
+            margin-right: 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-.search-bar input {
-    width: 80%;
-    padding: 10px;
-    font-size: 16px;
-}
+        .socials a:hover {
+            color: #0077b5; /* Color para hover, puede cambiarse por cada red */
+        }
 
-/* Lista de productos */
-.product-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 20px;
-}
+        .socials i {
+            margin-right: 5px;
+        }
 
-.product {
-    width: 23%;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 8px;
-    text-align: center;
-}
+        /* Sección de historias */
+        .stories {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
 
-.product img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-.product h3 {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-.product p {
-    font-size: 16px;
-}
-
-/* Media Queries para Responsividad */
-
-/* En pantallas pequeñas (móviles), el menú de hamburguesa debe ser más accesible */
-@media (max-width: 768px) {
-    .hamburger-menu {
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        z-index: 1000;
-    }
-
-    .profile-section {
-        margin-left: 0; /* Eliminar el margen para la foto en dispositivos pequeños */
-    }
-
-    .menu-content {
-        position: fixed;
-        left: 0;
-        top: 60px; /* Un poco abajo para que no se sobreponga al botón */
-        width: 100%;
-        display: none;
-        background-color: #f9f9f9;
-    }
-
-    .menu-content.show {
-        display: block;
-    }
-
-    .product {
-        width: 100%; /* Los productos ocuparán todo el ancho en dispositivos pequeños */
-    }
-
-    .search-bar input {
-        width: 100%; /* Barra de búsqueda a pantalla completa */
-    }
-}
-
-/* En pantallas grandes, el menú se mantiene en la parte izquierda */
-@media (min-width: 769px) {
-    .hamburger-menu {
-        position: absolute;
-        top: 20px;
-        left: 20px;
+    /* Sección de historias */
+    .stories {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+        padding: 10px;
     }
     
-    .profile-section {
-        margin-left: 70px; /* Añadir margen para dejar espacio al menú */
-        flex-direction: row;
+    .story {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 120px;
+        text-align: center;
     }
-}
+    
+    .story:hover {
+        background-color: #e0e0e0;
+    }
+    
+    .iconify {
+        font-size: 30px;
+        margin-right: 8px;
+    }
+    
+
+        /* Sección de productos */
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .product {
+            width: 200px;
+            margin: 10px;
+            text-align: center;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        /* Media Queries para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .header {
+                height: 250px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-info {
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .profile-photo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .socials {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .socials a {
+                font-size: 18px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+            }
+
+            .story {
+                width: 80px;
+                height: 80px;
+                font-size: 14px;
+            }
+
+            .story i {
+                font-size: 24px; /* Reducir tamaño del ícono */
+            }
+
+            .product {
+                width: 150px;
+            }
+        }
+
+        /* Media Queries para pantallas muy pequeñas (como Galaxy o dispositivos móviles) */
+        @media (max-width: 480px) {
+            .header {
+                height: 200px;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-photo {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 10px;
+            }
+
+            .story {
+                width: 60px;
+                height: 60px;
+                font-size: 12px;
+            }
+
+            .story i {
+                font-size: 18px; /* Reducir aún más el tamaño del ícono */
+            }
+
+            .product {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .product img {
+                height: 150px;
+            }
+
+            .product-list {
+                justify-content: center;
+            }
+        }
